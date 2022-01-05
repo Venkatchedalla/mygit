@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cb2f1c3a-fea3-449f-98b3-254cfec059c0" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="d9f564e6-65c5-423f-b367-49beea88d310" >
+		<http:request-connection host="localhost" port="8089" />
+	</http:request-config>
+	<flow name="venky-apiFlow" doc:id="c6607963-1f21-4e46-bf9f-38b1082cd8e3" >
+		<http:listener doc:name="Listener" doc:id="bf5b6063-157d-4a99-bb70-918e9fcbe6a3" config-ref="HTTP_Listener_config" path="/pass"/>
+		<http:request method="GET" doc:name="Request" doc:id="0d719430-fa35-4100-8cbf-63016bef5f27" path="/path" config-ref="HTTP_Request_configuration"/>
+	</flow>
+</mule>
